@@ -7,27 +7,29 @@
 <script>
 
 export default {
-  components: {},
-  async mounted() {
+  computed: {
+    cssFile() {
+      const path = this.$route.path;
+      if (path.startsWith('/p/')) {
+        return require('@/assets/css/premium.css');
+      } else if (path.startsWith('/s/')) {
+        return require('@/assets/css/standard.css');
+      }else if (path.startsWith('/b/')) {
+        return require('@/assets/css/basic.css');
+      }
+      return null;
+    },
   },
-  data() {
+  head() {
     return {
-    }
-  },
-  async fetch() {
-    // await this.$axios.get('/get/top/notification')
-    //   .then((response) => {
-    //     this.$store.commit('settingsModule/setTopNotification', response.data);
-    //   })
-
-    // await this.$axios.get('/get/logo')
-    //   .then((response) => {
-    //     this.$store.commit('settingsModule/setDefaultSettings', response.data.data);
-    //   })
-  },
-  async created() {
-  },
-  methods: {},
+      link: [
+        {
+          rel: 'stylesheet',
+          href: this.cssFile,
+        },
+      ],
+    };
+  }
 }
 </script>
 
