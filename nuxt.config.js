@@ -50,6 +50,7 @@ export default {
     '~/plugins/outsideClick',
     '~/plugins/globalMixinsPlugin',
     '~/plugins/globalComponentsPlugin',
+    // { src: '@/plugins/jquery', ssr: false },
     { src: '~/plugins/main.js', mode: 'client' }
   ],
 
